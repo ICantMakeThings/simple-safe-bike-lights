@@ -24,7 +24,7 @@ NeoPixelBus<NeoGrbFeature, NeoWs2812xMethod> strip(PIXEL_COUNT, PIXEL_PIN);
 RgbColor red(COLOR_SATURATION, 0, 0);
 RgbColor green(0, COLOR_SATURATION, 0);
 RgbColor blue(0, 0, COLOR_SATURATION);
-RgbColor white(10, 0, 0);
+RgbColor redish(10, 0, 0);
 RgbColor black(0);
 RgbColor amber(255,191,0);
 RgbColor bem(3, 9, 33);
@@ -41,7 +41,7 @@ HslColor hslbem(bem);
 void default_state(){
 
 	for (uint16_t i = 0; i <= 15; i++) {
-		strip.SetPixelColor(i, white);
+		strip.SetPixelColor(i, redish);
 	}
 	strip.Show();
 }
@@ -59,6 +59,7 @@ void righen(){
 		delay(100);
 		strip.Show();
 	}
+	default_state();
 }
 
 void leften(){
@@ -67,6 +68,7 @@ void leften(){
 		delay(100);
 		strip.Show();
 	}
+	default_state();
 }
 
 void breaken(){
@@ -76,6 +78,7 @@ void breaken(){
 		delay(100);
 		strip.Show();
 	}
+	default_state();
 }
 
 
