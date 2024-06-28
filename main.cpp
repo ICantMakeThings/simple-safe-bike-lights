@@ -32,7 +32,7 @@ RgbColor bem(3, 9, 33);
 HslColor hslRed(red);
 HslColor hslGreen(green);
 HslColor hslBlue(blue);
-HslColor hslWhite(white);
+HslColor hslRedish(redish);
 HslColor hslBlack(black);
 HslColor hslamber(amber);
 HslColor hslbem(bem);
