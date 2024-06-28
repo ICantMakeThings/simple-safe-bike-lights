@@ -59,26 +59,23 @@ void righen(){
 		delay(100);
 		strip.Show();
 	}
-	default_state();
 }
 
 void leften(){
-	for (uint16_t i = 7; i >= 0; i--) {
-		strip.SetPixelColor(i, amber);
+	for (uint16_t i = 8; i <= 15; i++) {
+		strip.SetPixelColor(15-i, amber);
 		delay(100);
 		strip.Show();
 	}
-	default_state();
 }
 
 void breaken(){
-	for (uint16_t i = 0; i <= 15; i++) {
+	for (uint16_t i = 0; i <= 7; i++) {
 		strip.SetPixelColor(i, red);
 		strip.SetPixelColor(15-i, red);
 		delay(100);
 		strip.Show();
 	}
-	default_state();
 }
 
 
@@ -100,7 +97,6 @@ void setup()
 	// this resets all the neopixels to an off state
 	strip.Begin();
 	strip.Show();
-
 }
 
 void loop()
