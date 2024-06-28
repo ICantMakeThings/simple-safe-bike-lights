@@ -112,15 +112,15 @@ void loop()
 
 	default_state();
 
-	if (digitalRead(RIGHT)) {
+	if (digitalRead(RIGHT) == 0) {
 		righen();
 	}
 
-	if (digitalRead(LEFT)) {
+	if (digitalRead(LEFT) == 0) {
 		leften();
 	}
 
-	if (digitalRead(BREAK)) {
+	if (digitalRead(BREAK) == 0) {
 		breaken();
 	}
 
