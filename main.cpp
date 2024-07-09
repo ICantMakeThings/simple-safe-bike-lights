@@ -1,25 +1,25 @@
+/////////////////////////////////////////////////////////
+///////////  simple-safe-bike-lights  //////////////////
+///////////////////////////////////////////////////////
+///// OSHW PL000018 ////// CC-BY-SA-4.0 //////////////
+/////////////////////////////////////////////////////
+
+
 #include <NeoPixelBus.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include <cstdint>
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 32 // OLED display height, in pixels
-#define OLED_RESET -1
-#define SCREEN_ADDRESS 0x3C // 0x3D, 0x3C
+#define FLOODLIGHT 10
+#define PIXEL_PIN 1
+
+#define LEFT 5
+#define RIGHT 6
+#define BREAK 7
+#define FLDIN 8
+
 #define PIXEL_COUNT 16 // this example assumes 4 pixels, making it smaller will cause a failure
-#define PIXEL_PIN 9 // make sure to set this to the correct pin, ignored for Esp8266
 #define COLOR_SATURATION 128
-#define LEFT 2
-#define RIGHT 3
-#define BREAK 10
 
-
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-// three element pixels, in different order and speeds
 NeoPixelBus<NeoGrbFeature, NeoWs2812xMethod> strip(PIXEL_COUNT, PIXEL_PIN);
-// NeoPixelBus<NeoRgbFeature, Neo400KbpsMethod> strip(PIXEL_COUNT, PIXEL_PIN);
 
 RgbColor red(COLOR_SATURATION, 0, 0);
 RgbColor green(0, COLOR_SATURATION, 0);
@@ -78,37 +78,32 @@ void breaken(){
 	}
 }
 
+void floodlighten(){
+	digitalWrite(FLOODLIGHT, HIGH);
+}
+void floodlightenoff(){
+	digitalWrite(FLOODLIGHT, LOW);
+}
 
 void setup()
 {
-	Wire.begin(6, 7);
-	display.begin(SSD1306_SWITCHCAPVCC);
-	display.clearDisplay();
-	display.drawPixel(10, 10, SSD1306_WHITE);
-	display.display();
-
 	pinMode(LEFT, INPUT_PULLUP);
 	pinMode(RIGHT, INPUT_PULLUP);
 	pinMode(BREAK, INPUT_PULLUP);
+	pinMode(FLOODLIGHT, OUTPUT);
+	pinMode(FLDIN, INPUT_PULLUP);
 	digitalWrite(LEFT, HIGH);
 	digitalWrite(RIGHT, HIGH);
 	digitalWrite(BREAK, HIGH);
+	digitalWrite(FLDIN, HIGH);
+	digitalWrite(FLOODLIGHT, LOW);
 
-	// this resets all the neopixels to an off state
 	strip.Begin();
 	strip.Show();
 }
 
 void loop()
 {
-	/*
-	   display.setTextSize(2); // Draw 2X-scale text
-	   display.setTextColor(SSD1306_WHITE);
-	   display.setCursor(10, 0);
-	   display.println("scroll");
-	   display.display(); // Show initial text
-	   */
-
 	default_state();
 
 	if (digitalRead(RIGHT) == 0) {
@@ -121,6 +116,12 @@ void loop()
 
 	if (digitalRead(BREAK) == 0) {
 		breaken();
+	}
+
+	if (digitalRead(FLDIN) == 0) {
+		floodlighten();
+	} else {
+		floodlightenoff();
 	}
 
 	delay(10);
