@@ -90,9 +90,9 @@ void righen(){
 }
 
 void leften(){
-	for (uint16_t i = ((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2)+1; i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
+	for (uint16_t i = ((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2); i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
 		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
-			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j), amber);
+			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j+1), amber);
 		}
 		delay(100);
 		strip.Show();
@@ -103,7 +103,7 @@ void breaken(){
 	for (uint16_t i = (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2; i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
 		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
 			strip.SetPixelColor(i+j, red);
-			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j), red);
+			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j+1), red);
 		}
 		delay(100);
 		strip.Show();
