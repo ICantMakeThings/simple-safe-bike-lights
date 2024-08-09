@@ -102,8 +102,8 @@ void leften(){
 void breaken(){
 	for (uint16_t i = LED_MATRIX_WIDTH/2; i < LED_MATRIX_WIDTH; i++) {
 		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
-			strip.SetPixelColor(i+j, amber);
-			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j), amber);
+			strip.SetPixelColor(i+j, red);
+			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j), red);
 		}
 		delay(100);
 		strip.Show();
