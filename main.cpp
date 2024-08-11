@@ -16,17 +16,20 @@
 #define BREAK 7
 #define FLDIN 8
 
-#define PIXEL_COUNT 16 // this example assumes 4 pixels, making it smaller will cause a failure
-#define COLOR_SATURATION 128
+#define LED_MATRIX_HEIGHT 4
+#define LED_MATRIX_WIDTH 12
+
+#define PIXEL_COUNT 48
+#define COLOR_SATURATION 255
 
 NeoPixelBus<NeoGrbFeature, NeoWs2812xMethod> strip(PIXEL_COUNT, PIXEL_PIN);
 
 RgbColor red(COLOR_SATURATION, 0, 0);
 RgbColor green(0, COLOR_SATURATION, 0);
 RgbColor blue(0, 0, COLOR_SATURATION);
-RgbColor redish(10, 0, 0);
+RgbColor redish(20, 0, 0);
 RgbColor black(0);
-RgbColor amber(255,191,0);
+RgbColor amber(255, 85, 0);
 RgbColor bem(3, 9, 33);
 
 HslColor hslRed(red);
@@ -40,39 +43,51 @@ HslColor hslbem(bem);
 
 void default_state(){
 
-	for (uint16_t i = 0; i <= 15; i++) {
+	for (uint16_t i = 0; i < 48; i++) {
 		strip.SetPixelColor(i, redish);
 	}
 	strip.Show();
+	delay(200);
+	for (uint16_t i = 0; i < 48; i++) {
+		strip.SetPixelColor(i, black);
+	}
+	strip.Show();	
+	delay(200);
 }
 
 void all_off(){
-	for (uint16_t i = 0; i <= 15; i++) {
+	for (uint16_t i = 0; i < 48; i++) {
 		strip.SetPixelColor(i, black);
 	}
 	strip.Show();
 }
 
 void righen(){
-	for (uint16_t i = 8; i <= 15; i++) {
-		strip.SetPixelColor(i, amber);
+	for (uint16_t i = (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2; i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
+		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
+			strip.SetPixelColor(i+j, amber);
+		}
 		delay(100);
 		strip.Show();
 	}
 }
 
 void leften(){
-	for (uint16_t i = 8; i <= 15; i++) {
-		strip.SetPixelColor(15-i, amber);
+	for (uint16_t i = ((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2); i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
+		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
+			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j+1), amber);
+		}
 		delay(100);
 		strip.Show();
 	}
 }
 
 void breaken(){
-	for (uint16_t i = 0; i <= 7; i++) {
-		strip.SetPixelColor(i, red);
-		strip.SetPixelColor(15-i, red);
+	for (uint16_t i = (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)/2; i < (LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT); i+=4) {
+		for (uint16_t j = 0; j < LED_MATRIX_HEIGHT; j++) {
+			strip.SetPixelColor(i+j, red);
+			strip.SetPixelColor((LED_MATRIX_WIDTH*LED_MATRIX_HEIGHT)-(i+j+1), red);
+		}
 		delay(100);
 		strip.Show();
 	}
@@ -87,6 +102,7 @@ void floodlightenoff(){
 
 void setup()
 {
+
 	pinMode(LEFT, INPUT_PULLUP);
 	pinMode(RIGHT, INPUT_PULLUP);
 	pinMode(BREAK, INPUT_PULLUP);
