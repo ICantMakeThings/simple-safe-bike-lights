@@ -31,7 +31,7 @@
 #define SCREEN_ADDRESS 0x3C // 0x3D, 0x3C
 */
 
-#define PIXEL_COUNT 48 // this example assumes 4 pixels, making it smaller will cause a failure
+#define PIXEL_COUNT 48
 #define COLOR_SATURATION 255
 
 
