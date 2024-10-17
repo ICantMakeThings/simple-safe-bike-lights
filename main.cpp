@@ -11,13 +11,18 @@
 //#include <Adafruit_SSD1306.h>
 #include <cstdint>
 
-#define FLOODLIGHT 10
-#define PIXEL_PIN 1
+#define FLOODLIGHT 7
+#define FLOODLIGHTfar 6
 
-#define LEFT 5
-#define RIGHT 6
-#define BREAK 7
-#define FLDIN 8
+#define PIXEL_PIN 10
+
+int buttonValue; 
+
+//#define LEFT 5
+//#define RIGHT 6
+//#define BREAK 7
+#define FLDIN 5
+#define FLDINfar 4
 
 #define LED_MATRIX_HEIGHT 4
 #define LED_MATRIX_WIDTH 12
@@ -31,7 +36,7 @@
 #define SCREEN_ADDRESS 0x3C // 0x3D, 0x3C
 */
 
-#define PIXEL_COUNT 48
+#define PIXEL_COUNT 48 // this example assumes 4 pixels, making it smaller will cause a failure
 #define COLOR_SATURATION 255
 
 
@@ -117,6 +122,13 @@ void floodlightenoff(){
 	digitalWrite(FLOODLIGHT, LOW);
 }
 
+void floodlightenee(){
+	digitalWrite(FLOODLIGHTfar, HIGH);
+}
+void floodlightenoffee(){
+	digitalWrite(FLOODLIGHTfar, LOW);
+}
+
 void setup()
 {
 	/*
@@ -126,17 +138,21 @@ void setup()
 	display.drawPixel(10, 10, SSD1306_WHITE);
 	display.display();
 	*/
-
-	pinMode(LEFT, INPUT_PULLUP);
-	pinMode(RIGHT, INPUT_PULLUP);
-	pinMode(BREAK, INPUT_PULLUP);
+	pinMode(3, INPUT_PULLDOWN);
+	//pinMode(LEFT, INPUT_PULLUP);
+	//pinMode(RIGHT, INPUT_PULLUP);
+	//pinMode(BREAK, INPUT_PULLUP);
 	pinMode(FLOODLIGHT, OUTPUT);
+	pinMode(FLOODLIGHTfar, OUTPUT);
 	pinMode(FLDIN, INPUT_PULLUP);
-	digitalWrite(LEFT, HIGH);
-	digitalWrite(RIGHT, HIGH);
-	digitalWrite(BREAK, HIGH);
+	pinMode(FLDINfar, INPUT_PULLUP);
+	//digitalWrite(LEFT, HIGH);
+	//digitalWrite(RIGHT, HIGH);
+	//digitalWrite(BREAK, HIGH);
 	digitalWrite(FLDIN, HIGH);
+	digitalWrite(FLDINfar, HIGH);
 	digitalWrite(FLOODLIGHT, LOW);
+	digitalWrite(FLOODLIGHTfar, LOW);
 
 	strip.Begin();
 	strip.Show();
@@ -153,7 +169,7 @@ void loop()
 	   */
 
 	default_state();
-
+/*
 	if (digitalRead(RIGHT) == 0) {
 		righen();
 	}
@@ -165,11 +181,35 @@ void loop()
 	if (digitalRead(BREAK) == 0) {
 		breaken();
 	}
+*/
+buttonValue=(analogRead(3));
+
+	if (buttonValue>=4000 && buttonValue<=4095){
+		leften();
+	}
+
+	if (buttonValue>=2200 && buttonValue<=2450){
+		righen();
+	}
+
+	if (buttonValue>=2900  && buttonValue<=3150){
+		breaken();
+	}
+
+
 
 	if (digitalRead(FLDIN) == 0) {
 		floodlighten();
 	} else {
 		floodlightenoff();
+	}
+
+
+
+		if (digitalRead(FLDINfar) == 0) {
+		floodlightenee();
+	} else {
+		floodlightenoffee();
 	}
 
 	delay(10);
