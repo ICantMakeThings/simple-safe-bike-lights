@@ -14,22 +14,24 @@ Why not make thease bike lights! based off a esp32-c3. they have turning signals
 
 ## Required Components
 
-- **ESP32-C3 MINI**: [AliExpress Link](https://www.aliexpress.com/item/1005007446928015.html)
-- **LED Driver (with pwm)**: [AliExpress Link](https://www.aliexpress.com/item/1005005947868326.html)
-- **Optical Lenses (30 deg)**: [AliExpress Link](https://www.aliexpress.com/item/1005006808303074.html)
-- **4X12 Led Panel**: [AliExpress Link](https://www.aliexpress.com/item/1005007218748810.html)
-- **XPE LED, 1-3W 20mm Size**: [AliExpress Link](https://www.aliexpress.com/item/1005005136107874.html)
-- **SK12D07 Toggle switch**: [AliExpress Link](https://www.aliexpress.com/item/1005004508749740.html)
-- **TP4056**: [AliExpress Link](https://www.aliexpress.com/item/1005004427739715.html)
-- **RJ45 FEMALE SOCKET**: [AliExpress Link](https://www.aliexpress.com/item/4000661138112.html)
-- **RJ45 Cable (1m)**: [AliExpress Link](https://www.aliexpress.com/item/1005005367350795.html)
-- **CN3903 Step down regulator (if using dynamo)**: [AliExpress Link](https://www.aliexpress.com/item/1005007823599024.html)
-- **Photoresistor(5528)**: [AliExpress Link](https://www.aliexpress.com/item/1005006038662473.html)
-- **Male, Female Pinheader**: [AliExpress Link](https://www.aliexpress.com/item/1005004936556564.html)
-- **18650 Battery Holders**: [AliExpress Link](https://www.aliexpress.com/item/4001131339145.html)
+- **ESP32-C3 MINI**: [AliExpress Link](https://s.click.aliexpress.com/e/_omcEbhA)
+- **LED Driver (with pwm)**: [AliExpress Link](https://s.click.aliexpress.com/e/_oFYNDT2)
+- **Optical Lenses (30 deg)**: [AliExpress Link](https://s.click.aliexpress.com/e/_oDEaBB6)
+- **4X12 Led Panel**: [AliExpress Link](https://s.click.aliexpress.com/e/_oprjs0g)
+- **XPE LED, 1-3W 20mm Size**: [AliExpress Link](https://s.click.aliexpress.com/e/_oFJSGbO)
+- **SK12D07 Toggle switch**: [AliExpress Link](https://s.click.aliexpress.com/e/_oDRTOre)
+- **TP4056**: [AliExpress Link](https://s.click.aliexpress.com/e/_ooOWr6o)
+- **RJ45 FEMALE SOCKET**: [AliExpress Link](https://s.click.aliexpress.com/e/_opwp07e)
+- **RJ45 Cable (1m)**: [AliExpress Link](https://s.click.aliexpress.com/e/_oBHLXYc)
+- **CN3903 Step down regulator (if using dynamo)**: [AliExpress Link](https://s.click.aliexpress.com/e/_onZReAG)
+- **Photoresistor(5528)**: [AliExpress Link](https://s.click.aliexpress.com/e/_olkzf5Q)
+- **Male, Female Pinheader**: [AliExpress Link](https://s.click.aliexpress.com/e/_omr6TjS)
+- **18650 Battery Holders**: [AliExpress Link](https://s.click.aliexpress.com/e/_olF3p9e)
 - **Resistors**
 - **Battery**
 - **misc.**
+
+*Note: Thease are referral links. If you purchase through it, I earn a commission at no extra cost to you.*
 
 **Note** - the parts list is a updated version compared to the pcb's and such.
 The BOM is big so yk the cost is kinda big, if u want "simple"
